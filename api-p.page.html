@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>api_p</ion-title>
+    <input type="text" [(ngModel)]="name">
+    <button (click)="buscar()">Buscar</button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="pokemons.length"> <!-- verifico que el arreglo tenga unque sea un solo valor para
+  mostrar la data, sino que no muestre nada-->
+    <ion-card *ngFor="let pokemons of pokemons"> <!-- se esta evaluando verdadero porque {} == true -->
+      <img src="{{pokemons?.sprites?.front_default}}"/> <!-- el ? despues de un nombre
+      significa que esta propiedad o objeto puede ser undefined pero que si tiene valor te busque la propiedad
+    -->
+      <ion-card-header>
+        <ion-card-title>{{pokemons.name}}</ion-card-title> <!-- aca accedemos a la propiedad name del pokemon-->
+        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        Here's a small text description for the card content. Nothing more, nothing less.
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+</ion-content>
